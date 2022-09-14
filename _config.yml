@@ -106,5 +106,5 @@ enable_contact: false
 #### Phantom Navigation menu
 enable_nav: true
 nav_item:
-  - { url: '/#portfolio', text: 'Projects' }
+  - { url: '/portfolio', text: 'Projects' }
   - { url: '/articles', text: 'Articles' }
