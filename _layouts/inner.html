@@ -1,15 +1,26 @@
 {% include header.html %}
 
-  <article>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-
-          {{ content }}
-
+<main id="articles">
+  <div class="wrap">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- <div class="col-md-6"> -->
+        <p class="fs-1 page-title">Articles</p>
+        {% for item in site.articles_item %}
+        <div class="container">
+          <small class="article-date">{{ item.date }}</small>
+          <a class="article-title-link" href="{{ item.url }}">
+            <p class="fs-1">{{ item.title }}</p>
+          </a>
+          {% for tag in item.tags %}
+          <small class="tag">{{ tag }}</small>
+          {%endfor %}
         </div>
+        {% endfor %}
+        <!-- </div> -->
       </div>
     </div>
-  </article>
+  </div>
+</main>
 
 {% include footer.html %}

@@ -13,20 +13,29 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: "Hello. I'm Jami Gibbs."
-email: 'jami0821@gmail.com'
-description: "I'm a software developer and designer from Chicago creating useful things for the web."
+title: "Hi!, I'm Gloria Lopez"
+email: 'glorialopez.gelm@gmail.com'
+description: "A software developer, lover of good code practices and neuroscience."
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://jamigibbs.github.io/phantom" # the base hostname & protocol for your site, e.g. https://example.com
-twitter_username: 'jamigibbs'
-github_username: 'jamigibbs'
-medium_username: 'blog.jamigibbs.com'
+twitter_username: 'soyglorialopez'
+github_username: 'soyglorialopez'
+linkedin_username: 'gloria-lopez-86abaa129'
 
 # Build settings
 markdown: kramdown
 # theme: phantom # Uncomment once published to RubyGems
 plugins:
   - jekyll-paginate-v2
+
+
+
+############################################################
+#Article configuration
+
+articles_item:
+  - { url: 'https://soyglorialopez.medium.com/buenas-practicas-de-desarrollo-en-node-js-ec4ef54f2208', date: 'Jan 23, 2021', title: 'Good development practices in  NODE.JS' , tags: ['Node.js', 'Backend'] }
+  - { url: 'https://soyglorialopez.medium.com/la-magia-de-javascript-nodejs-830a5c067e01', date: 'Sep 13, 2020', title: 'How work Javascript?' , tags: ['Fronted'] }
 
 ############################################################
 # Site configuration for the Jekyll 3 Pagination Gem
@@ -51,7 +60,7 @@ pagination:
   #permalink: '/page/:num' # Pages are html files, linked jekyll extensionless permalink style.
 
   # Optional the title format for the paginated pages (supports :title for original page title, :num for pagination page number, :max for total number of pages)
-  title: ':title - page :num'
+  title: ':title'
 
   # Limit how many pagenated pages to create (default: 0, means all)
   limit: 0
@@ -90,12 +99,12 @@ pagination:
 
 ### Phantom settings
 footer_text: '© 2018 Jami Gibbs'
-admin_name: 'Jami Gibbs'
+admin_name: 'Gloria López'
 google_analytics: "UA-9999999-99" # Update with your own tracking ID
 enable_contact: false
 
 #### Phantom Navigation menu
 enable_nav: true
 nav_item:
-  - { url: '/', text: 'Home' }
-  - { url: '/about', text: 'About' }
+  - { url: '/#portfolio', text: 'Projects' }
+  - { url: '/articles', text: 'Articles' }
