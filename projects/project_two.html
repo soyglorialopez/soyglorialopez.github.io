@@ -1,0 +1,115 @@
+---
+title: Projects
+permalink: /project_two/
+---
+<!-- BLANK -->
+
+{% include header.html %}
+
+<main id="project" container>
+  <div class="row">
+    <div class="col-xs-12 col-md-8 wrap">
+
+      <h2>Telegram Bot</h2>
+
+      <p>This project is about telegram Bot, which wishes you good morning by sending you a message daily at 07:00 AM.
+        To perform
+        it we used telegram API with python as main language, crond for scheduling the execution of python scripts,
+        Docker to
+        encapsulate our project in a container, and two AWS services, the first one is ECR (Elastic Container Registry)
+        for
+        storing the docker image, and the second one, EC2 (Elastic Compute Cloud), in which the Docker container will
+        run on an
+        instance.
+      </p>
+      <br>
+      <h4>Python Scripts</h4>
+      <p>
+        If we want the bot sends us good morning daily, first we have to send it a message to the bot, this message must
+        be the
+        word /start.
+      </p>
+      <p>
+        To access the Telegram API, we need a token, which we obtained by creating the bot. Now we can interact with the
+        API, we
+        will use the /getUpdate method, which returns the messages that the bot has received during the day, so we need
+        to save
+        the chat_ids of those messages to send to people the good morning daily, the following script uses sqlite3 to do
+        it.
+      </p>
+      <br>
+      <script src="https://gist.github.com/soyglorialopez/ff831a146b9c5abac1ad9330e87965e8.js"></script>
+      <br>
+      <p>
+        Then we have the main.py file, which gets the chat_ids, that the previous script saved them into the local DB,
+        after
+        getting the chat_ids, it sends the message to the users.
+      </p>
+      <script src="https://gist.github.com/soyglorialopez/c04740e98311b4b630a41c4e07cee572.js"></script>
+      <br>
+      <br>
+      <h4>Schedule the scripts with Crond</h4>
+      <p>
+        To schedule the execution of those python scripts we will use crond, which executes cron jobs that are scheduled
+        in a
+        crontab file, In this file, you must specify;
+      </p>
+      <i><strong>minute, hour, day_of_month, month, weekday, and command.</strong></i>
+      <p>
+        <br>
+        In the following crontab file, we are specifying to run every day the db.py file at 23:00 PM and the main.py
+        file at
+        07:00 AM.
+      </p>
+      <script src="https://gist.github.com/soyglorialopez/4ec37950a7f2ee820a1980bb659e73f5.js"></script>
+      <small>*why 23:00 PM? Well, we need to save the chat_ids before ends the day.</small>
+      <br>
+      <br>
+      <h4><br>The code in a Docker Container</h4>
+      <p>
+        Then we create a Dockerfile to run the project in a container, in the following file we are using a python
+        image, adding
+        the Timezone America/Asuncion (the city where I live), working directory, copy of our files in the workdir,
+        install
+        dependencies, and run crond
+      </p>
+      <script src="https://gist.github.com/soyglorialopez/a8aa43f214bbb4375d3b88728fd38412.js"></script>
+      <br>
+      <br>
+      <h4 <br>Deploy the container on an instance</h4>
+      <p>
+        To deploy this container on an EC2 instance, we first need to store the image in some container image
+        repository, for
+        this project we will use Amazon ECR Service.
+      </p>
+      <div class="wrap-img">
+        <img src="https://portfolio-images24.s3.amazonaws.com/project_two/ecr.png" width="100%" alt="">
+      </div>
+      <p>After pushing the image to ECR, we have to connect to the instance, here we are performing by ssh, Inside the
+        instance,
+        we have to perform some steps</p>
+      <p>1) Install Docker</p>
+      <div class="wrap-img">
+        <img src="https://portfolio-images24.s3.amazonaws.com/project_two/install_docker.png" width="100%" alt="">
+      </div>
+
+      <p>2) Pull the image from ECR</p>
+      <div class="wrap-img">
+        <img src="https://portfolio-images24.s3.amazonaws.com/project_two/pull_docker.png" width="100%" alt="">
+      </div>
+
+      <p>3) Run the container</p>
+      <div class="wrap-img">
+        <img src="https://portfolio-images24.s3.amazonaws.com/project_two/run_docker.png" width="100%" alt="">
+      </div>
+      <br>
+      <br>
+      <p>And finally, we have the result, our bot sends us a good morning message every day.</p>
+      <div class="wrap-img">
+        <img src="https://portfolio-images24.s3.amazonaws.com/project_two/screen.png" width="100%" alt="">
+      </div>
+    </div>
+  </div>
+</main>
+
+{% include footer.html %}
