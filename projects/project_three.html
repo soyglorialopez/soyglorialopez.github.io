@@ -1,0 +1,89 @@
+---
+title: Projects
+permalink: /etl/
+---
+<!-- BLANK -->
+
+{% include header.html %}
+
+<main id="project" container>
+  <div class="row">
+    <div class="col-xs-12 col-md-8 wrap">
+
+      <h2>ETL</h2>
+
+      <p>In this project, we have built an ETL pipeline in python, which <strong><i>extracts</i></strong> weather data
+        from an API using the
+        requests
+        library, <strong><i>transforms</i></strong>the obtained data using Pandas and NumPy, and at the end
+        <strong><i>loads</i></strong> the data into a DynamoDB
+        table with
+        the awswrangler library.
+      </p>
+      <br>
+      <h4>Before Starting</h4>
+      <p>
+        For this project, we will use the API of meteoblue.com, in which we are given an API key to perform API calls,
+        that key
+        will be saved in a config.py file.
+      </p>
+
+      <script src="https://gist.github.com/soyglorialopez/2fd2c87ed81fdab8396d73e9aa07cd86.js"></script>
+      <br>
+      <br>
+      <br>
+      <h4>Extract</h4>
+      <p>Mateoblue.com has a lot of weather related options, we chose the 7 days weather option
+        and the
+        air quality option. <br>
+        In the code below, we are getting the data</p>
+      <script src="https://gist.github.com/soyglorialopez/735cdcd7cfa4d6a01d5e9713190832ce.js"></script>
+      <br>
+      <h4>Transform</h4>
+      <p> To transform the data we use pandas with numpy, so before converting the JSON into a dataframe, we choose the
+        values we
+        are going to work with</p>
+      <script src="https://gist.github.com/soyglorialopez/b11ee4a1ae1b6aed7a948a4e65baa48a.js"></script>
+      <div class="wrap-img">
+        <img src="/img/etl/main_df.png" width="100%" alt="">
+      </div>
+
+      <p>This data will be loaded into a table in DynamoDB, so we replace all the NaN values and add the id column, the
+        id has to
+        be a hash</p>
+      <script src="https://gist.github.com/soyglorialopez/abdbdb423f419545bfd12d133bd09624.js"></script>
+      <div class="wrap-img">
+        <img src="/img/etl/df_nan_id.png" width="100%" alt="">
+      </div>
+      <p>We transform the temperature and felt temperature values into integers to show the data more clearly and with
+        the
+        precipitation and dust concentration values we convert them into object types.</p>
+      <script src="https://gist.github.com/soyglorialopez/08773d82d07958a9201b7822ae17d663.js"></script>
+
+      <div class="wrap-img">
+        <img src="/img/etl/df_int_object.png" width="100%" alt="">
+      </div>
+
+      <p>For the uv index and air quality columns, we classify them according to their percentages</p>
+      <script src="https://gist.github.com/soyglorialopez/d12a52e40a8b113c2b100a955faf5b76.js"></script>
+
+      <div class="wrap-img">
+        <img src="/img/etl/df_uv_air.png" width="100%" alt="">
+      </div>
+      <h4>Load</h4>
+      <p>AWS Data Wrangler is  AWS SDK for pandas (awswrangler), we will use it to load our dataframe in a table in
+        DynamoDB</p>
+      <script src="https://gist.github.com/soyglorialopez/a97d19d1a99634a8a7f448f29f3643f7.js"></script>
+      <p>After finishing the process, the result</p>
+      <div class="wrap-img">
+        <img src="/img/etl/dynamo_table.png" width="100%" alt="">
+      </div>
+      <p>This ETL has been built in a way, but there are other very powerful ways, for example in the extraction process,
+        you can
+        have several sources of information and in the transformation process use them to combine them and have useful
+        information, and at the end save them in another DB or make graphs.</p>
+    </div>
+  </div>
+</main>
+
+{% include footer.html %}
