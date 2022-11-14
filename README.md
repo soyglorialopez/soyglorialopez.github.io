@@ -6,23 +6,24 @@ A minimalist, responsive portfolio theme for [Jekyll](http://jekyllrb.com/) with
 
 [See it in action](http://jamigibbs.github.io/phantom/).
 
+
 ## Fancy using it for your own site?
 
 Here are some steps to get you started:
 
 1. Clone this repo and cd into the directory:
 
-  ```bash
+```bash
   git clone https://github.com/jamigibbs/phantom.git your-dir-name && cd your-dir-name
-  ```
+```
 
 2. Run:
 
-  ```bash
+```bash
   gem install bundler
   bundle install
   bundle exec jekyll serve
-  ```
+```
 
   You may need to append your commands with `sudo` if you're getting a permissions error.
 
@@ -32,7 +33,7 @@ Here are some steps to get you started:
 
   `http://127.0.0.1:4000`
 
-## Launching with Github Pages :rocket:
+## Launching with Github Pages 🚀
 
 Jekyll + Github pages is a marriage made in heaven. You can [use your own custom domain name](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/) or use the default Github url (ie. http://username.github.io/repository) and not bother messing around with DNS settings.
 
@@ -91,8 +92,6 @@ Read more about the [pagination plugin](http://jekyllrb.com/docs/pagination/).
 ## Credit
 
 * Bootstrap, http://getbootstrap.com/, (C) 2011 - 2016 Twitter, Inc., [MIT](https://github.com/twbs/bootstrap/blob/master/LICENSE)
-
 * Wow, https://github.com/matthieua/WOW, (C) 2014 - 2016 Matthieu Aussaguel
-, [GPL](https://github.com/matthieua/WOW#open-source-license)
-
+  , [GPL](https://github.com/matthieua/WOW#open-source-license)
 * Animate.css, https://github.com/daneden/animate.css, (C) 2016 Daniel Eden, [MIT](https://github.com/daneden/animate.css/blob/master/LICENSE)

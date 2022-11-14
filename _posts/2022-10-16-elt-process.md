@@ -9,5 +9,5 @@ featured_image: '/img/etl/main_df.png'
 project_link: '/etl/'
 button_icon: 'flask'
 button_text: 'See Project'
-lead_text: "Transformation of meteorological data into data that is easier to read and store in the DB"
+lead_text: "Transformation of meteorological data into data that is easier to read and store them in a DB"
 ---
