@@ -1,7 +1,7 @@
 ---
 layout: inner
 position: right
-title: '"Retail Data Warehouse: Centralizing Transactions for Business Insights'
+title: 'Retail Data Warehouse'
 date: 2016-02-20 21:15:00
 categories: development design
 tags: Data warehouse Python  PostgreSQL Pandas SQL
